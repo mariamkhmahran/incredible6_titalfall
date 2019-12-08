@@ -7,7 +7,7 @@ public class hudManager : MonoBehaviour
 {
     public Canvas titan_hud;
     public Canvas pilot_hud;
-    bool titan_on = true;
+    bool titan_on;
 
     // pilot
     public Slider pilot_health_bar;
@@ -17,8 +17,8 @@ public class hudManager : MonoBehaviour
     public Text pilot_weapon_name_textfield;
 
     // reference player health here
-    int pilot_health = 100;
-    int pilot_titanfall = 0;
+    int pilot_health;
+    int pilot_titanfall;
 
     int pilot_remaining_ammo = 100;
     int pilot_maximum_ammo = 400;
@@ -41,11 +41,15 @@ public class hudManager : MonoBehaviour
     int titan_remaining_dashes = 2;
     int titan_core_ability = 0;
 
+    private GameObject pilot;
+    private GameObject titan;
+
+
+
 
       void Start ()
       {
-        displayTitanPanel();
-        // displayPilotPanel();
+        displayPilotPanel();
       }
 
       void Update ()
@@ -53,9 +57,9 @@ public class hudManager : MonoBehaviour
       // pilot updated
       if(!titan_on) 
       {
-        pilot_health -= 1;
-        pilot_remaining_ammo -=1;
-        pilot_titanfall +=1;
+        // pilot_health -= 1;
+        // pilot_remaining_ammo -=1;
+        // pilot_titanfall +=1;
         pilot_health_bar.value = pilot_health;
         pilot_titanfall_bar.value = pilot_titanfall;
         pilot_ammo_textfield.text = pilot_remaining_ammo.ToString() + " |" +pilot_maximum_ammo.ToString();
@@ -63,9 +67,9 @@ public class hudManager : MonoBehaviour
       }
       else
       {
-        titan_health -=1;
-        titan_cooldown +=1;
-        titan_core_ability +=1;
+        // titan_health -=1;
+        // titan_cooldown +=1;
+        // titan_core_ability +=1;
 
         titan_health_bar.value = titan_health;
         titan_cooldown_bar.value = titan_cooldown;
@@ -85,6 +89,7 @@ public class hudManager : MonoBehaviour
           titan_dash_1.enabled = false;
           titan_dash_2.enabled = false;
           titan_dash_3.enabled = false;
+
         } else if(titan_remaining_dashes == 3) {
           titan_dash_3.enabled = true;
           titan_dash_2.enabled = true;
@@ -95,14 +100,20 @@ public class hudManager : MonoBehaviour
     }
     public void displayTitanPanel ()
     {
-      titan_on = true;
       pilot_hud.enabled = false;
       titan_hud.enabled = true;
+      titan_on = true;
     }
      public void displayPilotPanel ()
     {
-      titan_on = false;
       pilot_hud.enabled = true;
       titan_hud.enabled = false;
+      pilot = GameObject.FindGameObjectsWithTag("Pilot")[0];
+      pilot_health = pilot.GetComponent<Pilot>().health;
+      Debug.Log("pilot_health");
+      
+      Debug.Log(pilot_health);
+      pilot_titanfall =  pilot.GetComponent<Pilot>().titanfall;
+      titan_on = false;
     }
 }
