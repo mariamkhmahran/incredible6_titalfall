@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -65,6 +66,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            if(transform.position.y < -50)
+            {
+                Debug.Log("You Lost!");
+                SceneManager.LoadScene("Game Over");
+            }
+            if(transform.position.z > 510)
+            {
+                Debug.Log("Parkour Level Completed");
+            }
             if (Input.GetKeyDown(KeyCode.J))
             {
                 transform.Rotate(-90.0f, 0, 0);
@@ -126,7 +136,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            Debug.Log(desiredMove);
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
             float dashDistance = 100.0f;
@@ -141,7 +150,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
           
             if (doublejump == true)
             {
-                m_MoveDir.y = m_JumpSpeed;
+                m_MoveDir.y = m_JumpSpeed*2;
                 m_Jump = false;
                 m_Jumping = true;
                 doublejumppossible = false;
