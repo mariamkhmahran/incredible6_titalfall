@@ -8,13 +8,16 @@ public class choose : MonoBehaviour
     public Button w1tbutton;
     public Button w2tbutton;
     public Button w3button;
-   static  public int primaryweapon;
+    static  public int primaryweapon;
+    private GameObject Global;
+
     // Update is called once per frame
     void Start()
     {
         w1tbutton.onClick.AddListener(w1);
         w2tbutton.onClick.AddListener(w2);
         w3button.onClick.AddListener(w3);
+        Global = GameObject.Find("GlobalVars");
         //switchWeapons();
     }
 
@@ -60,6 +63,7 @@ public class choose : MonoBehaviour
         SceneManager.LoadScene("start 2");
         Time.timeScale = 1f; ;
         primaryweapon = 1;
+        Global.GetComponent<GlobalVars>().setPrimaryWeapon(1);
         Debug.Log(primaryweapon);
     }
     public void w2()
@@ -68,6 +72,7 @@ public class choose : MonoBehaviour
         SceneManager.LoadScene("start 2");
         Time.timeScale = 1f;
         primaryweapon = 2;
+        Global.GetComponent<GlobalVars>().setPrimaryWeapon(2);
         Debug.Log(primaryweapon);
     }
     public void w3()
@@ -75,6 +80,7 @@ public class choose : MonoBehaviour
         SceneManager.LoadScene("start 2");
         Time.timeScale = 1f;
         primaryweapon = 3;
+        Global.GetComponent<GlobalVars>().setPrimaryWeapon(3);
         Debug.Log(primaryweapon);
     }
 

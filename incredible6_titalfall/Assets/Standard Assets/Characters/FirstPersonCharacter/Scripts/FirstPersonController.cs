@@ -75,6 +75,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 Debug.Log("Parkour Level Completed");
             }
+
             if (Input.GetKeyDown(KeyCode.J))
             {
                 transform.Rotate(-90.0f, 0, 0);

@@ -10,8 +10,12 @@ public class choose2 : MonoBehaviour
     int start;
     static public int heavyweapon;
     // Update is called once per frame
+
+    private GameObject Global;
+    // Update is called once per frame
     void Start()
     {
+        Global = GameObject.Find("GlobalVars");
         w1tbutton.onClick.AddListener(w1);
         w2tbutton.onClick.AddListener(w2);
       
@@ -61,6 +65,7 @@ public class choose2 : MonoBehaviour
         SceneManager.LoadScene("start 3");
         Time.timeScale = 1f; ;
         heavyweapon = 1;
+        Global.GetComponent<GlobalVars>().setHeavyWeapon(1);
         start = heavyweapon;
         Debug.Log(heavyweapon);
     }
@@ -70,6 +75,8 @@ public class choose2 : MonoBehaviour
       SceneManager.LoadScene("start 3");
         Time.timeScale = 1f;
         heavyweapon = 2;
+
+        Global.GetComponent<GlobalVars>().setHeavyWeapon(2);
         start = heavyweapon;
         Debug.Log(heavyweapon);
        

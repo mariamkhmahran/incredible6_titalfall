@@ -3776,6 +3776,46 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5204636276317535232, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636276368170650, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636276440319780, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636277583104663, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636276317535233, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: e776f876d5dea4ac9b419e25457df3ee, type: 3}
+    - target: {fileID: 5204636276368170651, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: e776f876d5dea4ac9b419e25457df3ee, type: 3}
+    - target: {fileID: 5204636276440319781, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: e776f876d5dea4ac9b419e25457df3ee, type: 3}
+    - target: {fileID: 5204636277583104648, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: e776f876d5dea4ac9b419e25457df3ee, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc08743d6539bc246bf38e383a7b036b, type: 3}
 --- !u!1001 &1090117189
@@ -5049,6 +5089,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636275737728485, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636276317535232, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636276368170650, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636276440319780, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636277301819677, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204636277583104663, guid: cc08743d6539bc246bf38e383a7b036b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 5204636276317535233, guid: cc08743d6539bc246bf38e383a7b036b,
         type: 3}

@@ -10,12 +10,16 @@ public class choose3 : MonoBehaviour
     public static string ResultText;
     //public static Text ResultText;
     public static int Titan;
+
+    private GameObject Global;
    
     // Update is called once per frame
     void Start()
     {
 
       
+
+        Global = GameObject.Find("GlobalVars");
       
         if (w1tbutton)
            
@@ -40,6 +44,11 @@ public class choose3 : MonoBehaviour
         Time.timeScale = 1f; ;
         SceneManager.LoadScene("play");
         Debug.Log(Titan);
+        Global.GetComponent<GlobalVars>().setTitan(0);
+        
+        Time.timeScale = 1f; ;
+        Debug.Log(Titan);
+        SceneManager.LoadScene("Combat");
         ResultText = "You won!";
     }
     public void w2()
@@ -49,6 +58,11 @@ public class choose3 : MonoBehaviour
         Time.timeScale = 1f;
         play.x = 1;
         SceneManager.LoadScene("play");
+
+        Global.GetComponent<GlobalVars>().setTitan(1);
+        Time.timeScale = 1f;
+        play.x = 1;
+        SceneManager.LoadScene("Combat");
         Debug.Log(Titan);
     }
    
