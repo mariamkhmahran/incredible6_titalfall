@@ -50,6 +50,7 @@ public class hudManager : MonoBehaviour
       void Start ()
       {
         displayPilotPanel();
+
       }
 
       void Update ()
@@ -60,6 +61,9 @@ public class hudManager : MonoBehaviour
         // pilot_health -= 1;
         // pilot_remaining_ammo -=1;
         // pilot_titanfall +=1;
+        pilot_health = pilot.GetComponent<pilotScript>().health;
+        pilot_titanfall =  pilot.GetComponent<pilotScript>().titanfall;
+
         pilot_health_bar.value = pilot_health;
         pilot_titanfall_bar.value = pilot_titanfall;
         pilot_ammo_textfield.text = pilot_remaining_ammo.ToString() + " |" +pilot_maximum_ammo.ToString();
@@ -109,11 +113,10 @@ public class hudManager : MonoBehaviour
       pilot_hud.enabled = true;
       titan_hud.enabled = false;
       pilot = GameObject.FindGameObjectsWithTag("Pilot")[0];
-      pilot_health = pilot.GetComponent<Pilot>().health;
+      pilot_health = pilot.GetComponent<pilotScript>().health;
       Debug.Log("pilot_health");
-      
       Debug.Log(pilot_health);
-      pilot_titanfall =  pilot.GetComponent<Pilot>().titanfall;
+      pilot_titanfall =  pilot.GetComponent<pilotScript>().titanfall;
       titan_on = false;
     }
 }

@@ -6,6 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Hana/Main Menu.unity
+    guid: 5661e68e5c357c346ae32c32d58ad77b
+  - enabled: 1
     path: Assets/Scenes/Mariam.unity
     guid: f1528ce628bbd614baf9f4876e1d0750
+  - enabled: 1
+    path: Assets/Scenes/Hana/Game Over.unity
+    guid: bf281e7d1151da44bb4dd3df122ccb77
+  - enabled: 1
+    path: Assets/Scenes/Hana/howto.unity
+    guid: 2d0b25cd01153074a96db8d265ed0373
+  - enabled: 1
+    path: Assets/Scenes/Hana/start 3.unity
+    guid: dc979815b38663a4eb0e02a353f8710d
+  - enabled: 1
+    path: Assets/Scenes/Hana/Pause.unity
+    guid: 933645eced0e08d43be9aef859862a85
+  - enabled: 1
+    path: Assets/Scenes/Hana/credits.unity
+    guid: 8e5081233c7d9c34e8ac8acd664f2871
+  - enabled: 1
+    path: Assets/Scenes/Hana/start 2.unity
+    guid: 43fd1c0a47d63f64fac76784b4dbd2a3
+  - enabled: 1
+    path: Assets/Scenes/Hana/start.unity
+    guid: 1ff48568a5f955742b3c4a43cab3e2cd
+  - enabled: 1
+    path: Assets/Scenes/Hana/play.unity
+    guid: d015856732709ba40b5f47c2de517b0e
+  - enabled: 1
+    path: Assets/Scenes/Combat.unity
+    guid: f6137ad3490cb374ab0ab1bbad2bd8a9
   m_configObjects: {}

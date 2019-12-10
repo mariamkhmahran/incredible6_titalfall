@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Pilot : MonoBehaviour
+public class pilotScript : MonoBehaviour
 {
     [HideInInspector]
     public int health;
@@ -28,25 +28,24 @@ public class Pilot : MonoBehaviour
 
     void Start()
     {
-        Global = GameObject.Find("GlobalVars");
-        primaryweapon = Global.GetComponent<GlobalVars>().primaryweapon;
-        heavyweapon = Global.GetComponent<GlobalVars>().heavyweapon;
-        health = 50;
+        // Global = GameObject.Find("GlobalVars");
+        // primaryweapon = Global.GetComponent<GlobalVars>().primaryweapon;
+        // heavyweapon = Global.GetComponent<GlobalVars>().heavyweapon;
+        health = 50;        
         titanfall = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         timePassed += Time.deltaTime;
 
-        if(( (int) timePassed) >= 3) {
+        if(( (int) timePassed) >= 3 & !increaseHealth) {
             increaseHealth = true;
             health += 5;
             prevTime = ((int) timePassed);
         }
-        Debug.Log(((int) timePassed) + " " + prevTime);
+
         if(increaseHealth && (((int) timePassed) - prevTime) >= 1) {
             health += 5;
             prevTime = ((int) timePassed);

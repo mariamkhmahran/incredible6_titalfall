@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class pause : MonoBehaviour
+public class Pause : MonoBehaviour
 {
     public static bool option = false;
     public static bool gameov = false;
@@ -35,7 +35,7 @@ public class pause : MonoBehaviour
             }
             else
             {
-                Pause();
+                startPause();
 
             }
 
@@ -44,7 +44,7 @@ public class pause : MonoBehaviour
 
 
     }
-    public void Pause()
+    public void startPause()
     {
         //SceneManager.LoadScene("pause");
         // Time.timeScale = 1f;
