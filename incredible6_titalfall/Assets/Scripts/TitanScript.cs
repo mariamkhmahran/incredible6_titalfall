@@ -15,7 +15,12 @@ public class TitanScript : MonoBehaviour
     private int health = 400;
     public int coreAbilityMeter = 0;
     public bool coreAbilityActive = false;
+    private float nextActionTime2 = 0.0f;
+    public float period2 = 15.0f;
     GameObject titan;
+    GameObject shield;
+    public bool defensiveAbilityActive = true;
+    private bool stopAddition = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +28,38 @@ public class TitanScript : MonoBehaviour
         fps = GetComponent<FirstPersonController>();
         m_OriginalHeight = m_CharacterController.height;
         dashMeter = 3;
+        shield = GameObject.Find("Shield");
+        shield.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(Time.time + " time");
+        Debug.Log(nextActionTime2 + " next");
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if(gameObject.tag == "Titan")
+            {
+                if (defensiveAbilityActive)
+                {
+                    defensiveAbilityActive = false;
+                    shield.SetActive(true);
+                    shield.GetComponent<ShieldScript>().shieldActive = true;
+                    if (!stopAddition)
+                    {
+                        nextActionTime2 = Time.time + period2;
+                        stopAddition = true;
+                    }
+                }
+                
+            }
+        }
+        if(Time.time > nextActionTime2)
+        {
+            defensiveAbilityActive = true;
+            stopAddition = false;
+        }
         activateIonCoreAbility();
         if (!coreAbilityActive)
         {
