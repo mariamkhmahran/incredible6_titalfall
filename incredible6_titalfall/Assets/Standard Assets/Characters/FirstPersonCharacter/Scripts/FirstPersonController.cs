@@ -29,7 +29,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        private Camera m_Camera;
+        public Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
@@ -37,7 +37,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
-        private Vector3 m_OriginalCameraPosition;
+        public Vector3 m_OriginalCameraPosition;
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
@@ -46,6 +46,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool doublejump;
         private bool prevjumped;
         private RaycastHit ray;
+        float speedGLOBAL;
+        bool doUpdate = false;
+        bool dashAllowed = true;
+        public int dashMeter = 3;
         // Use this for initialization
         private void Start()
         {
@@ -66,6 +70,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+
             if(transform.position.y < -50)
             {
                 Debug.Log("You Lost!");
@@ -75,7 +80,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 Debug.Log("Parkour Level Completed");
             }
-
+            
             if (Input.GetKeyDown(KeyCode.J))
             {
                 transform.Rotate(-90.0f, 0, 0);
@@ -128,6 +133,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             float speed;
             GetInput(out speed);
+            speedGLOBAL = speed;
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
@@ -142,13 +148,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float dashDistance = 100.0f;
             if (gameObject.tag == "Titan")
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (dashAllowed&&dashMeter>0)
                 {
-                    m_MoveDir.x = desiredMove.x * speed * dashDistance;
-                    m_MoveDir.z = desiredMove.z * speed * dashDistance;
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        m_MoveDir.x = desiredMove.x * speed * dashDistance;
+                        m_MoveDir.z = desiredMove.z * speed * dashDistance;
+                        dashMeter -= 1;
+                    }
                 }
+                
             }
-          
+
             if (doublejump == true)
             {
                 m_MoveDir.y = m_JumpSpeed*2;
@@ -178,7 +189,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
             ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
+            if (doUpdate)
+            {
+                UpdateCameraPosition(speed);
+                doUpdate = false;
+
+            }
 
             m_MouseLook.UpdateCursorLock();
         }
@@ -323,6 +339,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_GravityMultiplier += 0.1f;
             }
             
+        }
+       
+        public void UpdateCamera()
+        {
+
+            doUpdate = true;
+            
+        }
+        public void disallowDash()
+        {
+            dashAllowed = false;
+        }
+        public void allowDash()
+        {
+            dashAllowed = true;
         }
     }
 }
